@@ -1,0 +1,68 @@
+/* CGDS Tooltip — short helper text on hover/focus.
+   Catalog: docs/cgds-catalog.md#Tooltip (left/center/right alignment). */
+
+.tt {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.tt__bubble {
+  position: absolute;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-2px);
+  transition: opacity 120ms ease, transform 120ms ease;
+
+  min-width: 160px;
+  max-width: 280px;
+  padding: var(--space-xs) var(--space-s);
+  border-radius: var(--radius-small);
+  background: var(--color-text-primary);
+  color: var(--color-text-inverse);
+  font-size: var(--text-body-3);
+  line-height: var(--lh-body-3);
+  font-weight: var(--weight-regular);
+  text-align: left;
+  white-space: normal;
+  box-shadow: 0 4px 12px rgba(33, 38, 42, 0.18);
+}
+
+.tt__bubble.tt__bubble--open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Placement: bottom */
+.tt__bubble--bottom {
+  top: calc(100% + 8px);
+}
+.tt__bubble--bottom.tt__bubble--center { left: 50%; transform: translateX(-50%) translateY(-2px); }
+.tt__bubble--bottom.tt__bubble--center.tt__bubble--open { transform: translateX(-50%) translateY(0); }
+.tt__bubble--bottom.tt__bubble--left { left: 0; }
+.tt__bubble--bottom.tt__bubble--right { right: 0; }
+
+/* Placement: top */
+.tt__bubble--top {
+  bottom: calc(100% + 8px);
+}
+.tt__bubble--top.tt__bubble--center { left: 50%; transform: translateX(-50%) translateY(2px); }
+.tt__bubble--top.tt__bubble--center.tt__bubble--open { transform: translateX(-50%) translateY(0); }
+.tt__bubble--top.tt__bubble--left { left: 0; }
+.tt__bubble--top.tt__bubble--right { right: 0; }
+
+/* Arrow */
+.tt__bubble::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--color-text-primary);
+  transform: rotate(45deg);
+}
+.tt__bubble--bottom::after { top: -3px; }
+.tt__bubble--top::after { bottom: -3px; }
+.tt__bubble--center::after { left: 50%; margin-left: -4px; }
+.tt__bubble--left::after { left: 16px; }
+.tt__bubble--right::after { right: 16px; }

@@ -1,0 +1,82 @@
+@import "tailwindcss";
+@import "./cds-fonts.css";
+@source "../node_modules/cds-react-components/src";
+
+:root {
+  --foreground-base: #1d1d1d;
+  --foreground-muted: #4d4d4d;
+  --surface-primary: #ffffff;
+  --surface-muted: #f5f5f2;
+  --surface-inputs: #ffffff;
+  --page-base: #ffffff;
+  --primary-surface: #1d1d1d;
+  --primary-on-surface: #ffffff;
+  --border-base: #dcdcda;
+  --border-input: #dcdcda;
+  --border-focus: #236cff;
+
+  --ccpp-blue-1: #eef5fc;
+  --ccpp-blue-2: #d6e8f8;
+  --ccpp-blue-6: #236cff;
+  --ccpp-blue-10: #1c0265;
+  --ccpp-blue-11: #14014b;
+  --ccpp-green-2: #e0ffc2;
+  --ccpp-green-6: #3bd85e;
+  --ccpp-green-9: #287f39;
+  --ccpp-green-11: #1b4420;
+  --ccpp-green-12: #142613;
+  --ccpp-plum-1: #ffdbfe;
+  --ccpp-plum-9: #a31879;
+  --ccpp-plum-11: #650c25;
+  --accent-red-surface: #800b0b;
+
+  --ios-background: rgba(255, 255, 255, 0.7);
+  --ios-tint: rgba(229, 231, 235, 0.7);
+  --ios-foreground: #1d1d1d;
+
+  --radius-round: 9999px;
+  --radius-cards: 20px;
+  --radius-2xl: 16px;
+  --radius-small-things: 12px;
+  --radius-big-things: 20px;
+
+  --font-tally: "Tally", sans-serif;
+  --font-tally-display: "Tally Display", sans-serif;
+}
+
+@theme inline {
+  --color-foreground-base: var(--foreground-base);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-surface-primary: var(--surface-primary);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-inputs: var(--surface-inputs);
+  --color-primary-surface: var(--primary-surface);
+  --color-primary-on-surface: var(--primary-on-surface);
+  --color-border-base: var(--border-base);
+  --color-border-input: var(--border-input);
+  --color-border-focus: var(--border-focus);
+  --color-blue-1: var(--ccpp-blue-1);
+  --color-blue-2: var(--ccpp-blue-2);
+  --color-blue-6: var(--ccpp-blue-6);
+  --color-blue-10: var(--ccpp-blue-10);
+  --color-blue-11: var(--ccpp-blue-11);
+  --color-green-2: var(--ccpp-green-2);
+  --color-green-6: var(--ccpp-green-6);
+  --color-green-9: var(--ccpp-green-9);
+  --color-green-11: var(--ccpp-green-11);
+  --color-green-12: var(--ccpp-green-12);
+  --color-plum-1: var(--ccpp-plum-1);
+  --color-plum-9: var(--ccpp-plum-9);
+  --color-plum-11: var(--ccpp-plum-11);
+  --color-ios-bg: var(--ios-background);
+  --color-ios-tint: var(--ios-tint);
+  --color-ios-fg: var(--ios-foreground);
+  --radius-round: var(--radius-round);
+  --radius-cards: var(--radius-cards);
+  --radius-2xl: var(--radius-2xl);
+  --radius-sm: var(--radius-small-things);
+  --radius-big: var(--radius-big-things);
+  --font-sans: var(--font-tally), sans-serif;
+  --font-display: var(--font-tally-display), sans-serif;
+  --font-body: var(--font-tally), sans-serif;
+}

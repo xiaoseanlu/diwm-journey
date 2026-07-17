@@ -1,0 +1,403 @@
+/* mWeb shell — 375–428px viewport, simulated phone frame for demo */
+
+.mweb-shell {
+  min-height: 100vh;
+  background: var(--color-container-background-accent);
+  display: flex;
+  justify-content: center;
+  padding: var(--space-xxl) var(--space-l);
+}
+
+/* Phone frame — simulated device window */
+.mweb-phone {
+  width: 100%;
+  max-width: 412px; /* TT typical mobile max */
+  background: var(--color-page-background);
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  min-height: 800px;
+}
+
+/* Top bar — per Figma TY25 mWeb shell: menu + TT logo | search, help, cart, bell, "Do my taxes" pill */
+.mweb-header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 8px;
+  border-bottom: 1px solid var(--color-divider-primary);
+  background: var(--color-container-background-primary);
+}
+
+.mweb-header__iconbtn {
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-primary, #21262a);
+  border-radius: var(--radius-small, 4px);
+  flex-shrink: 0;
+}
+
+.mweb-header__iconbtn:hover {
+  background: var(--color-container-background-accent);
+}
+
+.mweb-header__brand {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 4px;
+  flex-shrink: 0;
+}
+
+.mweb-header__spacer {
+  flex: 1;
+  min-width: 0;
+}
+
+.mweb-header__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  padding: 0 10px;
+  margin-left: 4px;
+  background: transparent;
+  border: 2px solid var(--color-action-standard, #205ea3);
+  border-radius: var(--radius-small, 4px);
+  color: var(--color-action-standard, #205ea3);
+  font-family: var(--font-family-brand);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Race mode bar */
+.mweb-race {
+  padding: 8px 16px;
+  background: var(--color-container-background-primary);
+  border-bottom: 1px solid var(--color-divider-primary, #d5dee3);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mweb-race__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mweb-race__switch {
+  width: 36px;
+  height: 20px;
+  border-radius: 9999px;
+  background: #21262a;
+  border: none;
+  padding: 1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.mweb-race__knob {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.mweb-race__time {
+  font-family: var(--font-family-brand);
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.mweb-race__time-now {
+  font-weight: 600;
+  color: var(--color-text-primary, #21262a);
+}
+
+.mweb-race__time-total {
+  font-weight: 500;
+  color: var(--color-text-tertiary, #859299);
+}
+
+.mweb-race__track {
+  position: relative;
+  height: 4px;
+  width: 100%;
+  background: var(--color-track-primary, #adbac2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.mweb-race__fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: var(--color-ui-positive, #00856d);
+  border-radius: 8px;
+}
+
+.mweb-race__segment {
+  position: absolute;
+  top: 0;
+  width: 4px;
+  height: 4px;
+  background: var(--color-container-background-primary, #ffffff);
+}
+
+.mweb-race__sections {
+  display: flex;
+  width: 100%;
+}
+
+.mweb-race__section {
+  flex: 1 0 0;
+  min-width: 0;
+  font-family: var(--font-family-brand);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--color-text-secondary, #5d686f);
+}
+
+/* Optional section title */
+.mweb-section-title {
+  font-size: var(--text-body-1);
+  line-height: var(--lh-body-1);
+  font-weight: var(--weight-demi);
+  color: var(--color-text-primary);
+  margin: 0;
+  padding: var(--space-r);
+  border-bottom: 1px solid var(--color-divider-primary);
+}
+
+/* Content — full width, tighter padding than Web */
+.mweb-phone--immersive {
+  min-height: 852px;
+}
+
+.mweb-content--immersive {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+.mweb-content--immersive > .diwm-phone {
+  flex: 1;
+  min-height: 100%;
+  width: 100%;
+  max-width: none;
+  border-radius: 0;
+}
+
+.mweb-content {
+  flex: 1;
+  padding: var(--space-l) var(--space-r) var(--space-xxl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+  overflow-x: hidden;
+}
+
+/* Mobile overflow guardrails — same principles as NativeShell.
+   See native-shell.css for the full rationale; keep these in sync. */
+.mweb-content,
+.mweb-content * {
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.mweb-content img,
+.mweb-content svg,
+.mweb-content input,
+.mweb-content select,
+.mweb-content textarea {
+  max-width: 100%;
+}
+
+.mweb-content .content__inner--two-col {
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: none;
+  gap: var(--space-l);
+}
+
+.mweb-content .pay-summary {
+  order: -1;
+  position: static;
+  top: auto;
+}
+
+.mweb-content .w2-fields,
+.mweb-content .fnf-fields,
+.mweb-content .pay-fields,
+.mweb-content .pay-row-2col {
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: none;
+  gap: var(--space-r);
+}
+
+.mweb-content .w2-card,
+.mweb-content .fnf-card,
+.mweb-content .pay-card {
+  padding: var(--space-r);
+}
+
+.mweb-content .w2-card__header,
+.mweb-content .fnf-card__header,
+.mweb-content .pay-card__header {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.mweb-content p,
+.mweb-content span,
+.mweb-content div,
+.mweb-content h1,
+.mweb-content h2,
+.mweb-content h3,
+.mweb-content h4,
+.mweb-content .w2-card__source,
+.mweb-content .fnf-card__source,
+.mweb-content .page-subtitle {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.mweb-content input,
+.mweb-content select,
+.mweb-content textarea,
+.mweb-content .w2-field__input,
+.mweb-content .fnf-field__input,
+.mweb-content .pay-input {
+  width: 100%;
+  min-width: 0;
+}
+
+/* mWeb-specific page title (smaller than Web's Heading/3) */
+.mweb-content .page-title {
+  font-size: 24px;
+  line-height: 32px;
+  text-align: left;
+  margin: var(--space-xs) 0 var(--space-xxs);
+}
+
+.mweb-content .page-subtitle {
+  font-size: var(--text-body-2);
+  line-height: var(--lh-body-2);
+  text-align: left;
+  margin: 0;
+}
+
+.mweb-content .content__inner {
+  max-width: 100%;
+  align-items: stretch;
+  gap: var(--space-l);
+}
+
+/* mWeb actions — sticky bottom, full-width primary */
+.mweb-content .actions {
+  flex-direction: column-reverse; /* primary on top, back below */
+  gap: var(--space-xs);
+  padding-top: var(--space-l);
+  margin-top: auto;
+  width: 100%;
+  border-top: 1px solid var(--color-divider-primary);
+}
+
+.mweb-content .actions .btn {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: var(--text-body-2);
+  min-width: 0; /* override web .btn min-width: 100px */
+}
+
+/* ===== Mobile-native overrides for flow content ===== */
+
+/* Force single-column fields on mobile — 2-col grid breaks at this width */
+.mweb-content .w2-fields,
+.mweb-content .fnf-fields {
+  grid-template-columns: 1fr !important;
+  gap: var(--space-r) !important;
+}
+
+/* Tighter card padding — desktop 24px wastes phone real estate */
+.mweb-content .w2-card,
+.mweb-content .fnf-card {
+  padding: var(--space-r);
+  gap: var(--space-r);
+  border-radius: 12px;
+}
+
+/* Card header: stack title and label when space is tight */
+.mweb-content .w2-card__header,
+.mweb-content .fnf-card__header {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding-bottom: var(--space-s);
+}
+
+.mweb-content .w2-card__title,
+.mweb-content .fnf-card__title {
+  font-size: var(--text-body-2);
+  line-height: var(--lh-body-2);
+}
+
+/* Card content gap tightens */
+.mweb-content .w2-card {
+  gap: var(--space-s);
+}
+
+/* Dollar-field label + input spacing: tighter */
+.mweb-content .w2-field {
+  gap: 4px;
+}
+
+.mweb-content .w2-field__label {
+  font-size: var(--text-body-4);
+  line-height: var(--lh-body-4);
+}
+
+/* Dropzone — mobile-appropriate sizing */
+.mweb-content .dropzone {
+  padding: var(--space-xl) var(--space-r);
+  gap: var(--space-xs);
+}
+
+/* Review banner tightens */
+.mweb-content .review-banner,
+.mweb-content .error-banner {
+  padding: var(--space-s) var(--space-r);
+  border-radius: 10px;
+}
+
+/* Content inner spacing */
+.mweb-content .content__inner {
+  gap: var(--space-r);
+}

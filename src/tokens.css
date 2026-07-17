@@ -1,0 +1,96 @@
+/* CGDS tokens — extracted from CG Foundations + TurboTax nav/shell reference (Figma) */
+
+:root {
+  /* Text */
+  --color-text-primary: #21262a;
+  --color-text-secondary: #5d686f;
+  --color-text-tertiary: #859299;
+  --color-text-inverse: #ffffff;
+
+  /* Action / link */
+  --color-action-standard: #205ea3;
+  --color-action-standard-hover: #184a82;
+  --color-action-passive-subtle: rgba(240, 244, 246, 1);
+  --color-link-text: #205ea3;
+
+  /* UI / status */
+  --color-ui-primary: #205ea3;
+  --color-ui-positive: #00856d;
+  --color-ui-critical: #db334d;
+
+  /* Surface */
+  --color-page-background: #ffffff;
+  --color-container-background-primary: #ffffff;
+  --color-container-background-accent: #f4f4ef; /* left nav */
+  --color-container-background-accent-selected: #dfdfd8; /* selected nav item */
+  --color-container-border-primary: #c3ced5;
+  --color-container-border-accent: #db334d; /* selected nav red bar */
+  --color-divider-primary: #d5dee3;
+  --color-divider-secondary: #adbac2;
+  --color-track-primary: #c3ced5;
+
+  /* Input */
+  --color-input-background-primary: #ffffff;
+  --color-input-border-primary: #859299;
+  --color-input-placeholder: #859299;
+  --color-input-background-primary-selected: #21262a;
+
+  /* Radius */
+  --radius-small: 4px;
+  --radius-medium: 8px;
+  --radius-large: 16px;
+  --radius-full: 9999px;
+
+  /* Spacing (CG scale: xxs/xs/s/r/l/xl/xxl/xxxl) */
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-s: 12px;
+  --space-r: 16px;
+  --space-l: 20px;
+  --space-xl: 24px;
+  --space-xxl: 32px;
+  --space-xxxl: 40px;
+
+  /* Typography — "AvenirNext forINTUIT" is the TurboTax brand font; fallback to system sans */
+  --font-family-brand: "AvenirNext forINTUIT", "Avenir Next", Avenir, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Type scale (matches Figma IDS/CGDS typography styles) */
+  --text-body-4: 12px;  --lh-body-4: 16px;   /* fontSize01 */
+  --text-body-3: 14px;  --lh-body-3: 20px;   /* fontSize02 */
+  --text-body-2: 16px;  --lh-body-2: 24px;   /* fontSize03 */
+  --text-body-1: 20px;  --lh-body-1: 28px;   /* fontSize04 */
+  --text-heading-3: 34px; --lh-heading-3: 44px; /* fontSize07 — page title */
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-demi: 600;
+
+  /* Shell dimensions */
+  --left-nav-width: 200px;
+  --product-header-height: 60px;
+  --content-max-width: 1000px;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-family-brand);
+  font-size: var(--text-body-2);
+  line-height: var(--lh-body-2);
+  color: var(--color-text-primary);
+  background: var(--color-page-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}

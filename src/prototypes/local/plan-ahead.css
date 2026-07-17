@@ -1,0 +1,249 @@
+/* Plan ahead for next year — Figma 1646:28876 */
+
+.plan-ahead {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 20px 32px;
+  box-sizing: border-box;
+}
+
+.plan-ahead__title {
+  margin: 0;
+  max-width: 320px;
+  font-family: "Tally Display", "Tally", sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary, #000000);
+}
+
+.plan-ahead__projection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 21px;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  background: var(--color-surface-primary, #ffffff);
+  box-sizing: border-box;
+}
+
+.plan-ahead__projection-heading {
+  margin: 0;
+  font-family: "Tally", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.31px;
+  color: var(--color-text-primary, #000000);
+}
+
+.plan-ahead__projection-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.plan-ahead__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.plan-ahead__stat-label {
+  margin: 0;
+  font-family: "Tally", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: #6a7282;
+}
+
+.plan-ahead__stat-label--sparkle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 10px;
+  line-height: 14px;
+}
+
+.plan-ahead__stat-label--sparkle span {
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.plan-ahead__stat-value {
+  margin: 0;
+  font-family: "Tally", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: 0.07px;
+  color: var(--color-text-primary, #000000);
+}
+
+.plan-ahead__stat-value--savings {
+  color: #21612c;
+}
+
+.plan-ahead__stat-value-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 32px;
+}
+
+.plan-ahead__stat-meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  font-family: "Tally", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.plan-ahead__stat-meta--positive {
+  color: #00a63e;
+}
+
+.plan-ahead__stat-note {
+  margin: 0;
+  font-family: "Tally", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--color-text-secondary, #5d686f);
+}
+
+.plan-ahead__info-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: rgba(39, 85, 130, 0.1);
+  flex-shrink: 0;
+}
+
+.plan-ahead__section-title {
+  margin: 0;
+  padding-top: 4px;
+  font-family: "Tally", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--color-text-primary, #000000);
+}
+
+.plan-ahead__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.plan-ahead__card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 17px;
+  border: 1px solid var(--color-border-base, #c3ced5);
+  border-radius: 16px;
+  background: var(--color-surface-primary, #ffffff);
+  box-sizing: border-box;
+}
+
+.plan-ahead__card-head {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.plan-ahead__card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.plan-ahead__card-icon--heart {
+  background: #dcfce7;
+}
+
+.plan-ahead__card-icon--piggy {
+  background: #dcfce7;
+}
+
+.plan-ahead__card-icon--piggy img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.plan-ahead__card-title {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  font-family: "Tally", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: var(--color-text-primary, #000000);
+}
+
+.plan-ahead__card-body {
+  margin: 0;
+  font-family: "Tally", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 19.5px;
+  color: var(--color-text-primary, #000000);
+}
+
+.plan-ahead__card-body strong {
+  font-weight: 700;
+}
+
+.plan-ahead__cta {
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 46px;
+  background: #000000;
+  color: #ffffff;
+  font-family: "Tally", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.plan-ahead__cta:hover {
+  background: #1a1a1a;
+}
+
+/* PiP placement on this screen — Figma 1646:28953 */
+.screen--plan-ahead .ben-video-call {
+  top: 53px;
+  right: 14px;
+}
+
+.screen--plan-ahead .screen__scroll {
+  padding-top: 8px;
+}

@@ -1,0 +1,695 @@
+/* Expert match — in-chat card → fullscreen reassurance → Ben reveal */
+
+/* ── Phase 1: in-chat card ── */
+
+.expert-match-card {
+  margin-top: 20px;
+  padding: 20px 20px 24px;
+  border-radius: 16px;
+  background: linear-gradient(165deg, #5b9aff 0%, #4a82f5 45%, #3d78e8 100%);
+  box-shadow: 0 8px 28px rgba(61, 120, 232, 0.35);
+  color: #ffffff;
+  overflow: hidden;
+  animation: expert-card-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes expert-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.expert-match-card__title {
+  margin: 0 0 8px;
+  font-family: "Tally Display", "Tally", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.expert-match-card__subtitle {
+  margin: 0 0 20px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.expert-match-card__stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 220px;
+  justify-content: flex-end;
+  padding-bottom: 8px;
+  overflow: visible;
+}
+
+/* Face + ripples share exact center (ripples nested in face-wrap) */
+.expert-match-card__radar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 168px;
+  margin-bottom: 16px;
+  overflow: visible;
+}
+
+.expert-match-card__ripples {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.expert-match-card__pulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+}
+
+.expert-match-card__ripple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 96px;
+  height: 96px;
+  margin: -48px 0 0 -48px;
+  border-radius: 50%;
+  border: 0.75px solid rgba(255, 255, 255, 0.32);
+  box-shadow: none;
+  transform: scale(1);
+  opacity: 0;
+  animation: expert-card-pulse-ripple var(--expert-pulse-duration, 6.8s) cubic-bezier(0.22, 0.55, 0.24, 1) forwards;
+}
+
+@keyframes expert-card-pulse-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.42;
+  }
+  30% {
+    opacity: 0.34;
+  }
+  70% {
+    opacity: 0.16;
+  }
+  100% {
+    transform: scale(var(--ripple-scale-end, 5.5));
+    opacity: 0;
+  }
+}
+
+.expert-match-card__face-wrap {
+  position: relative;
+  z-index: 1;
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0;
+}
+
+.expert-match-card__face {
+  position: absolute;
+  inset: 0;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  opacity: 0;
+  transform: scale(0.88);
+  transition:
+    opacity var(--expert-cycle-duration, 0.28s) ease,
+    transform var(--expert-cycle-duration, 0.28s) ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.expert-match-card__face--active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 3;
+}
+
+.expert-match-card__ticker {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 28px;
+  overflow: hidden;
+}
+
+.expert-match-card__ticker-item {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.35);
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity var(--expert-cycle-duration, 0.28s) ease,
+    transform var(--expert-cycle-duration, 0.28s) ease,
+    color var(--expert-cycle-duration, 0.28s) ease;
+}
+
+.expert-match-card__ticker-item--active {
+  opacity: 1;
+  transform: translateY(0);
+  color: #ffffff;
+}
+
+/* ── Fullscreen overlay (phases 2–3) — portaled to .diwm-device-frame ── */
+
+.diwm-device-frame > .expert-anim--fullscreen {
+  position: absolute;
+  z-index: 200;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-radius: inherit;
+}
+
+.expert-anim--fullscreen {
+  position: absolute;
+  z-index: 200;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.expert-anim__bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    130% 95% at 12% -8%,
+    #508bfd 0%,
+    #3a7cfe 52%,
+    #236cff 100%
+  );
+  pointer-events: none;
+}
+
+.expert-anim--reassurance .expert-anim__bg {
+  backdrop-filter: blur(35px);
+  -webkit-backdrop-filter: blur(35px);
+}
+
+/* Fullscreen reassurance — same peaceful ripples as in-chat card */
+.expert-anim__ripple-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.expert-anim__ripple-origin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 96px;
+  height: 96px;
+  transform: translate(-50%, -50%);
+}
+
+.expert-anim__ripple-stage .expert-match-card__ripples {
+  top: 50%;
+  left: 50%;
+}
+
+.expert-anim__rings {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  width: 100%;
+  height: 55%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.expert-anim__rings--high {
+  top: 38%;
+}
+
+.expert-anim--reassurance .expert-anim__rings--high {
+  top: 34%;
+}
+
+.expert-anim__rings--visible {
+  opacity: 1;
+}
+
+.expert-anim__ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  transform: translate(-50%, -50%) scale(0.25);
+  animation: expert-ripple 2.8s ease-out infinite;
+}
+
+.expert-anim__ring--1 {
+  width: 120px;
+  height: 120px;
+  animation-delay: 0s;
+}
+
+.expert-anim__ring--2 {
+  width: 220px;
+  height: 220px;
+  animation-delay: 0.55s;
+}
+
+.expert-anim__ring--3 {
+  width: 340px;
+  height: 340px;
+  animation-delay: 1.1s;
+}
+
+.expert-anim__ring--4 {
+  width: 480px;
+  height: 480px;
+  animation-delay: 1.65s;
+}
+
+@keyframes expert-ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0.28);
+    opacity: 0.55;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Phase 2: reassurance copy */
+
+.expert-anim--reassurance {
+  animation: expert-fullscreen-in 0.55s cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+@keyframes expert-fullscreen-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.expert-anim__reassurance {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 1;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  transform: translateY(-6%);
+}
+
+.expert-anim__reassurance-heading {
+  margin: 0;
+  max-width: 320px;
+  font-family: "Tally Display", "Tally", sans-serif;
+  font-weight: 500;
+  font-size: clamp(48px, 14vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #d6e8f8;
+}
+
+.expert-anim__reassurance-line {
+  display: block;
+  animation: expert-reassurance-line-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.expert-anim__reassurance-line:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.expert-anim__reassurance-line:nth-child(2) {
+  animation-delay: 0.14s;
+}
+
+.expert-anim__reassurance-line--meet {
+  margin-top: 0.35em;
+  animation-delay: 0.32s;
+}
+
+@keyframes expert-reassurance-line-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Phase 3: Ben result (Figma 2586:35783) */
+
+.expert-anim--result {
+  animation: expert-fullscreen-in 0.45s cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+.expert-anim--result .expert-anim__bg {
+  backdrop-filter: blur(35px);
+  -webkit-backdrop-filter: blur(35px);
+}
+
+.expert-anim__rings--result {
+  top: 50%;
+  opacity: 0.2;
+}
+
+.expert-anim__result {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  flex: 1;
+  min-height: 0;
+}
+
+.expert-anim__result-scroll {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 32px 29px 20px;
+  box-sizing: border-box;
+}
+
+.expert-anim__composition {
+  display: flex;
+  align-items: flex-end;
+  gap: 15px;
+  margin-bottom: 16px;
+  animation: expert-result-item-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.05s;
+}
+
+.expert-anim__photo {
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.expert-anim__photo--lead {
+  position: relative;
+  width: 146px;
+  height: 182px;
+  border-radius: 22px;
+  background: #d6e8f8;
+}
+
+.expert-anim__photo-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 11px;
+  padding-bottom: 2px;
+}
+
+.expert-anim__photo--team {
+  width: 82px;
+  height: 82px;
+  border-radius: 18px;
+  background: rgba(214, 232, 248, 0.5);
+}
+
+.expert-anim__photo-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* ben.png is pre-composed head-to-shoulders (matches card ~146×182) */
+.expert-anim__photo--lead .expert-anim__photo-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.expert-anim__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.expert-anim__meta-head {
+  animation: expert-result-item-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.12s;
+}
+
+.expert-anim__name {
+  margin: 0 0 4px;
+  font-family: "Tally Display", "Tally", sans-serif;
+  font-size: clamp(48px, 15vw, 58px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #d6e8f8;
+}
+
+.expert-anim__team-line {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: #ffffff;
+}
+
+.expert-anim__team-line-icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.expert-anim__stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  animation: expert-result-item-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.2s;
+}
+
+.expert-anim__rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+}
+
+.expert-anim__star {
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.expert-anim__score {
+  font-family: "Tally Display", "Tally", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.expert-anim__count {
+  font-family: "Tally Display", "Tally", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.expert-anim__exp {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #ffffff;
+}
+
+.expert-anim__status-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.expert-anim__available {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  border-radius: 99px;
+  background: #e0ffc2;
+  font-family: "Tally Display", "Tally", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #287f39;
+}
+
+.expert-anim__available-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #287f39;
+  flex-shrink: 0;
+}
+
+.expert-anim__skills-block {
+  animation: expert-result-item-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.28s;
+}
+
+.expert-anim__skilled-label {
+  margin: 0 0 7px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: #ffffff;
+}
+
+.expert-anim__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.expert-anim__tag {
+  padding: 2px 7px;
+  border-radius: 99px;
+  font-family: "Tally Display", "Tally", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #1c0265;
+  background: #d6e8f8;
+}
+
+.expert-anim__result-foot {
+  flex-shrink: 0;
+  padding: 8px 20px 20px;
+  box-sizing: border-box;
+}
+
+.expert-anim__continue {
+  width: 100%;
+  min-height: 56px;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1d1d1d;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  animation: expert-result-item-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.36s;
+}
+
+.expert-anim__continue:hover {
+  background: #f5f5f5;
+}
+
+@keyframes expert-result-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hide chrome while fullscreen match runs */
+.screen--expert-match-fullscreen .diwm-cds-toolbar-full,
+.screen--expert-match-fullscreen .diwm-ai-composer,
+.diwm-device-frame--expert-match-fullscreen .diwm-cds-toolbar-full,
+.diwm-device-frame--expert-match-fullscreen .diwm-ai-composer,
+.diwm-device-frame--expert-match-fullscreen .diwm-main-surface {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .expert-match-card,
+  .expert-anim--fullscreen,
+  .expert-match-card__face,
+  .expert-match-card__ripple,
+  .expert-match-card__ticker-item,
+  .expert-anim__ring,
+  .expert-anim__reassurance-line,
+  .expert-anim__composition,
+  .expert-anim__meta-head,
+  .expert-anim__stats,
+  .expert-anim__skills-block,
+  .expert-anim__continue {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .expert-match-card__ripple {
+    opacity: 0.25;
+    transform: scale(1.5);
+  }
+
+  .expert-match-card__face--active {
+    opacity: 1;
+    transform: none;
+  }
+
+  .expert-match-card__ticker-item--active {
+    opacity: 1;
+    transform: none;
+  }
+}

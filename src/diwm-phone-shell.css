@@ -1,0 +1,230 @@
+/* DIWM prototype — fixed iPhone frame; CDS DeviceStatusBar + bezel Dynamic Island */
+
+.diwm-device-shell {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: var(--space-xxl) var(--space-l);
+  background: #f3f3ee;
+  box-sizing: border-box;
+}
+
+.diwm-device-frame {
+  width: 390px;
+  height: 844px;
+  max-height: calc(100vh - 2 * var(--space-xxl));
+  display: flex;
+  flex-direction: column;
+  background: var(--color-container-background-primary);
+  border-radius: 40px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  --diwm-statusbar-height: 70px;
+  box-shadow:
+    0 0 0 8px #1a1a1a,
+    0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+/* Physical Dynamic Island on bezel (in-screen bar uses dynamicIsland={false}) */
+.diwm-device-frame::before {
+  content: "";
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  z-index: 201;
+  width: 125px;
+  height: 37px;
+  border-radius: 100px;
+  background: #000;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.diwm-device-statusbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: transparent !important;
+  pointer-events: none;
+}
+
+.diwm-device-statusbar * {
+  pointer-events: auto;
+}
+
+.diwm-device-content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Native-style scroll: touch scroll works, scrollbar chrome hidden */
+.diwm-device-frame,
+.diwm-device-frame * {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.diwm-device-frame::-webkit-scrollbar,
+.diwm-device-frame *::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.diwm-device-home-indicator {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  box-sizing: border-box;
+  /* 16px from composer / textfield to home pill (Figma layout/footer-bottom) */
+  padding: 16px 0 13px;
+  background: inherit;
+}
+
+.diwm-device-home-indicator::before {
+  content: "";
+  width: 139px;
+  height: 5px;
+  border-radius: 100px;
+  background: #000;
+}
+
+.diwm-device-frame:has(.diwm-phone--welcome-hub) .diwm-device-home-indicator {
+  background: #9af285;
+}
+
+.diwm-device-frame:has(.diwm-phone--welcome-hub) .diwm-device-content {
+  overflow: visible;
+}
+
+/* CDS glass toolbar — backdrop-filter needs a non-clipping ancestor (Chrome is strict; Gecko/Zen is not) */
+.diwm-device-frame:has(.diwm-phone--sku-landing) .diwm-device-content,
+.diwm-device-frame:has(.diwm-cds-toolbar-full) .diwm-device-content,
+.diwm-device-frame:has(.diwm-cds-sku-toolbar) .diwm-device-content {
+  overflow: visible;
+}
+
+/* Modals / sheets — status bar stays visible above portaled scrim */
+.diwm-device-frame:has(.diwm-sheet-scrim--device-frame) .diwm-device-statusbar {
+  z-index: 1;
+}
+
+.diwm-device-frame:has(.diwm-sheet-scrim--device-frame) .diwm-device-content {
+  z-index: auto;
+}
+
+/* State interim — purple gradient edge-to-edge inside phone frame */
+.diwm-device-frame:has(.diwm-phone--state-interim) {
+  background: linear-gradient(180deg, #0c1638 0%, #1a2456 38%, #4a2878 72%, #7b3d9e 100%);
+}
+
+.diwm-device-frame:has(.diwm-phone--state-interim) .diwm-device-statusbar {
+  background: transparent;
+  color: #ffffff;
+}
+
+.diwm-device-frame:has(.diwm-phone--state-interim) .diwm-device-statusbar svg,
+.diwm-device-frame:has(.diwm-phone--state-interim) .diwm-device-statusbar path,
+.diwm-device-frame:has(.diwm-phone--state-interim) .diwm-device-statusbar [class*="text"] {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+.diwm-device-frame:has(.diwm-phone--state-interim) .diwm-device-home-indicator {
+  background: transparent;
+}
+
+.diwm-device-frame:has(.diwm-phone--state-interim) .diwm-device-home-indicator::before {
+  background: #ffffff;
+}
+
+.diwm-device-frame:has(.diwm-phone--state-interim) .diwm-device-content,
+.diwm-device-frame:has(.diwm-phone--state-interim) .diwm-phone {
+  background: transparent;
+}
+
+/* Running checks — light blue full bleed behind status bar */
+.diwm-device-frame:has(.diwm-phone--running-checks) {
+  background: #D6E8F8;
+}
+
+.diwm-device-frame:has(.diwm-phone--running-checks) .diwm-device-statusbar {
+  background: transparent;
+  color: #000000;
+}
+
+.diwm-device-frame:has(.diwm-phone--running-checks) .diwm-device-statusbar svg,
+.diwm-device-frame:has(.diwm-phone--running-checks) .diwm-device-statusbar path,
+.diwm-device-frame:has(.diwm-phone--running-checks) .diwm-device-statusbar [class*="text"] {
+  color: #000000 !important;
+  fill: #000000 !important;
+}
+
+.diwm-device-frame:has(.diwm-phone--running-checks) .diwm-device-home-indicator {
+  background: transparent;
+}
+
+.diwm-device-frame:has(.diwm-phone--running-checks) .diwm-device-home-indicator::before {
+  background: #000000;
+}
+
+.diwm-device-frame:has(.diwm-phone--running-checks) .diwm-device-content,
+.diwm-device-frame:has(.diwm-phone--running-checks) .diwm-phone {
+  background: transparent;
+}
+
+/* Expert match fullscreen — blue edge-to-edge inside phone frame */
+.diwm-device-frame--expert-match-fullscreen {
+  background: #3a7cfe;
+}
+
+.diwm-device-frame--expert-match-fullscreen .diwm-device-statusbar {
+  background: transparent;
+  color: #ffffff;
+}
+
+.diwm-device-frame--expert-match-fullscreen .diwm-device-statusbar svg,
+.diwm-device-frame--expert-match-fullscreen .diwm-device-statusbar path,
+.diwm-device-frame--expert-match-fullscreen .diwm-device-statusbar [class*="text"] {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+.diwm-device-frame--expert-match-fullscreen .diwm-device-home-indicator {
+  background: transparent;
+}
+
+.diwm-device-frame--expert-match-fullscreen .diwm-device-home-indicator::before {
+  background: #ffffff;
+}
+
+.diwm-device-frame--expert-match-fullscreen .diwm-device-content,
+.diwm-device-frame--expert-match-fullscreen .diwm-phone {
+  background: transparent;
+}
+
+.diwm-device-frame--expert-match-fullscreen .diwm-main-surface {
+  top: 0;
+}
+
+@media (max-width: 430px) {
+  .diwm-device-shell {
+    padding: var(--space-m);
+    align-items: center;
+  }
+
+  .diwm-device-frame {
+    width: 100%;
+    max-width: 390px;
+    height: min(844px, calc(100vh - 2 * var(--space-m)));
+  }
+}

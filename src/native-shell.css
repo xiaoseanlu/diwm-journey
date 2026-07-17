@@ -1,0 +1,725 @@
+/* =============================================================================
+   Native shell — one component, two modes (tax-home | tax-prep),
+   two platforms (ios | android). Based on CG TY25 Nav & Shell Native frame.
+   ============================================================================= */
+
+.native-shell {
+  min-height: 100vh;
+  background: var(--color-container-background-accent);
+  display: flex;
+  justify-content: center;
+  padding: var(--space-xxl) var(--space-l);
+  font-family: var(--font-family-brand);
+}
+
+.native-device {
+  width: 390px;
+  height: 844px;
+  background: var(--color-container-background-primary);
+  border-radius: 44px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 0 0 12px #1a1a1a,
+    0 0 0 14px #2a2a2a,
+    0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.native-shell--android .native-device {
+  border-radius: 28px;
+}
+
+/* ===== Status bars ===== */
+
+.native-statusbar {
+  height: 60px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 14px 4px;
+  color: #000;
+  flex-shrink: 0;
+}
+
+.native-statusbar--ios {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  font-weight: 600;
+}
+
+.native-statusbar--ios .native-statusbar__left,
+.native-statusbar--ios .native-statusbar__right {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.native-statusbar--ios .native-statusbar__left {
+  padding-left: 10px;
+  justify-content: flex-start;
+}
+
+.native-statusbar--ios .native-statusbar__right {
+  padding-right: 11px;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.native-statusbar--ios .native-statusbar__time {
+  font-size: 16px;
+  line-height: 21px;
+  letter-spacing: -0.32px;
+  min-width: 54px;
+  text-align: center;
+}
+
+.native-statusbar--ios .native-statusbar__island {
+  width: 125px;
+  height: 37px;
+  border-radius: 100px;
+  background: #000;
+  flex-shrink: 0;
+}
+
+.native-statusbar--android {
+  font-family: "Roboto", "Noto Sans", system-ui, sans-serif;
+  font-weight: 500;
+  padding: 12px 20px 6px;
+  align-items: center;
+}
+
+.native-statusbar--android .native-statusbar__time {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.native-statusbar--android .native-statusbar__right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ===== Product header ===== */
+
+.native-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 60px;
+  padding: 0 16px;
+  background: var(--color-container-background-primary);
+  border-bottom: 1px solid var(--color-divider-primary, #d5dee3);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 3;
+}
+
+.native-header__left {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-right: 12px;
+}
+
+.native-header__logo {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.native-header__back {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  border-radius: var(--radius-small, 4px);
+}
+
+.native-header__back:hover {
+  background: var(--color-container-background-accent);
+}
+
+.native-header__right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.native-header__icon-btn {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--color-text-secondary, #5d686f);
+  cursor: pointer;
+  border-radius: var(--radius-small, 4px);
+}
+
+.native-header__icon-btn:hover {
+  background: var(--color-container-background-accent);
+}
+
+.native-header__expert {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 0 10px;
+  background: transparent;
+  border: 2px solid var(--color-action-standard, #0077c5);
+  border-radius: var(--radius-small, 4px);
+  color: var(--color-action-standard, #0077c5);
+  font-family: var(--font-family-brand);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ===== Race mode bar (tax-prep only) ===== */
+
+.native-race {
+  padding: 8px 16px;
+  background: var(--color-container-background-primary);
+  border-bottom: 1px solid var(--color-divider-primary, #d5dee3);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.native-race__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.native-race__left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.native-race__switch {
+  width: 36px;
+  height: 20px;
+  border-radius: 9999px;
+  background: #c3ced5;
+  border: none;
+  padding: 1px;
+  position: relative;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.native-race__switch--on {
+  background: #21262a;
+  justify-content: flex-end;
+}
+
+.native-race__knob {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.native-race__time {
+  font-size: 14px;
+  line-height: 20px;
+  font-family: var(--font-family-brand);
+  white-space: nowrap;
+}
+
+.native-race__time-now {
+  font-weight: 600;
+  color: var(--color-text-primary, #21262a);
+}
+
+.native-race__time-total {
+  font-weight: 500;
+  color: var(--color-text-tertiary, #859299);
+}
+
+.native-race__navigate {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--color-action-standard, #205ea3);
+  font-family: var(--font-family-brand);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+.native-race__track {
+  position: relative;
+  height: 4px;
+  width: 100%;
+  background: var(--color-track-primary, #c3ced5);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.native-race__fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: var(--color-ui-positive, #00856d);
+  border-radius: 8px;
+}
+
+.native-race__segment {
+  position: absolute;
+  top: 0;
+  width: 4px;
+  height: 4px;
+  background: var(--color-container-background-primary, #ffffff);
+}
+
+/* ===== Refund monitor (tax-home only) ===== */
+
+.native-refunds {
+  position: relative;
+  padding: 12px 20px 16px;
+  background: var(--color-container-background-primary);
+  border-bottom: 1px solid var(--color-divider-primary, #d5dee3);
+  flex-shrink: 0;
+}
+
+.native-refunds__row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.native-refunds__row::-webkit-scrollbar {
+  display: none;
+}
+
+.native-refund {
+  flex-shrink: 0;
+  padding: 8px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.native-refund__label {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--color-text-primary, #393a3d);
+  font-family: var(--font-family-brand);
+  white-space: nowrap;
+}
+
+.native-refund__amount {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  font-family: var(--font-family-brand);
+  white-space: nowrap;
+}
+
+.native-refund__amount--positive {
+  color: var(--color-ui-positive, #108000);
+}
+
+.native-refund__amount--neutral {
+  color: var(--color-text-secondary, #6b6c72);
+}
+
+.native-refunds__collapse {
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 1px solid #d4d7dc;
+  border-radius: 8px;
+  color: #21262a;
+  cursor: pointer;
+  padding: 0;
+  z-index: 2;
+}
+
+/* ===== Content area ===== */
+
+.native-content {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+/* In tax-prep mode the content sits under a floating FAB — give it breathing room */
+.native-shell--tax-prep .native-content {
+  padding-bottom: 96px;
+}
+
+/* ===== Bottom tab nav (tax-home only) ===== */
+
+.native-tabbar {
+  display: flex;
+  align-items: stretch;
+  padding: 4px 0 0;
+  background: var(--color-container-background-primary);
+  border-top: 1px solid var(--color-divider-primary, #6b6c72);
+  flex-shrink: 0;
+  position: relative;
+  overflow: visible;
+}
+
+.native-tab {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 8px 2px;
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary, #6b6c72);
+  cursor: pointer;
+  font-family: var(--font-family-brand);
+}
+
+.native-tab--active {
+  color: var(--color-action-standard, #0077c5);
+}
+
+.native-tab__icon {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.native-tab__label {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+.native-tabbar__fab-slot {
+  flex: 1 0 0;
+  min-width: 0;
+  position: relative;
+  height: 60px;
+}
+
+/* ===== Help FAB (two variants) ===== */
+
+.native-fab {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-family-brand);
+}
+
+/* Matches CGDS "FAB tab" node (RTYGNapMSs2nYEt2ElDI0U 4093:95618).
+   60×70 slot positioned -18px above tab bar top; avatar 56 blueberry-10,
+   Help pill overlaps avatar bottom edge (top: 52 within slot). */
+.native-fab--tabbar {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 70px;
+  gap: 0;
+  display: block;
+}
+
+.native-fab--tabbar .native-fab__avatar {
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 56px;
+  background: #e0edff;
+  border: 2px solid #c5e1ff;
+  box-shadow: none;
+}
+
+.native-fab--tabbar .native-fab__banner {
+  position: absolute;
+  top: 52px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  height: 18px;
+  min-width: 60px;
+  padding: 0 6px 2px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  border-width: 1px;
+  border-radius: 20px;
+  background: var(--color-container-background-primary);
+  z-index: 1;
+}
+
+.native-fab--floating {
+  position: absolute;
+  right: 16px;
+  bottom: 56px;
+  width: 72px;
+  height: 78px;
+  gap: 2px;
+  filter: drop-shadow(0 6px 16px rgba(0, 119, 197, 0.22));
+  z-index: 4;
+}
+
+.native-shell--tax-prep .native-fab--floating {
+  bottom: 48px;
+}
+
+.native-fab__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 9999px;
+  background: #e0edff;
+  border: 2px solid #c5e1ff;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.native-fab__avatar svg {
+  display: block;
+}
+
+.native-fab__avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  display: block;
+}
+
+.native-fab__banner {
+  margin-top: -8px;
+  min-width: 72px;
+  padding: 2px 14px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-container-background-primary);
+  border: 1.5px solid var(--color-action-standard, #205ea3);
+  border-radius: 9999px;
+  color: var(--color-action-standard, #205ea3);
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+/* ===== iOS home indicator / Android gesture bar ===== */
+
+.native-home-indicator {
+  flex-shrink: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.native-home-indicator--ios {
+  height: 34px;
+}
+
+.native-home-indicator--ios::before {
+  content: "";
+  width: 139px;
+  height: 5px;
+  border-radius: 100px;
+  background: #000;
+}
+
+.native-home-indicator--android {
+  height: 24px;
+}
+
+.native-home-indicator--android::before {
+  content: "";
+  width: 108px;
+  height: 4px;
+  border-radius: 100px;
+  background: #000;
+  opacity: 0.85;
+}
+
+/* ===== Mobile overflow guardrails =====
+   Prototype flows are authored for desktop Web; when rendered inside a 375px
+   NativeShell they MUST respect the device width. The rules below are the
+   contract every flow should satisfy by default — if a flow adds new grid/flex
+   layouts that break on mobile, extend these rules rather than hardcoding
+   widths in the flow.
+
+   Core principles:
+   1. Every element box-sizes to border-box and caps at 100% width.
+   2. Multi-column grids collapse to single column.
+   3. Inputs, selects, and text fields stretch to 100% (min-width: 0).
+   4. Long text (filenames, URLs, IDs) wraps with overflow-wrap.
+   5. Headers use flex-wrap so secondary metadata drops below the title. */
+
+.native-content,
+.native-content * {
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.native-content img,
+.native-content svg,
+.native-content input,
+.native-content select,
+.native-content textarea {
+  max-width: 100%;
+}
+
+/* Single-column layout for any two-col content */
+.native-content .content__inner--two-col {
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: none;
+  gap: var(--space-l);
+}
+
+.native-content .pay-summary {
+  order: -1;
+  position: static;
+  top: auto;
+}
+
+/* Collapse any CSS Grid to single column at mobile widths */
+.native-content .w2-fields,
+.native-content .fnf-fields,
+.native-content .pay-fields,
+.native-content .pay-row-2col {
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: none;
+  gap: var(--space-r);
+}
+
+/* Card headers: allow title + source metadata to wrap */
+.native-content .w2-card,
+.native-content .fnf-card,
+.native-content .pay-card {
+  padding: var(--space-r);
+}
+
+.native-content .w2-card__header,
+.native-content .fnf-card__header,
+.native-content .pay-card__header {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+/* Long text (filenames, IDs, URLs) must wrap, not push layout wider */
+.native-content p,
+.native-content span,
+.native-content div,
+.native-content h1,
+.native-content h2,
+.native-content h3,
+.native-content h4,
+.native-content .w2-card__source,
+.native-content .fnf-card__source,
+.native-content .page-subtitle {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Inputs and selects always stretch full width */
+.native-content input,
+.native-content select,
+.native-content textarea,
+.native-content .w2-field__input,
+.native-content .fnf-field__input,
+.native-content .pay-input {
+  width: 100%;
+  min-width: 0;
+}
+
+/* ===== Content-level platform normalizations ===== */
+/* Prototypes that use .page-title / .actions get mobile-friendly sizing. */
+
+.native-content .page-title {
+  font-size: 26px;
+  line-height: 32px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 8px;
+}
+
+.native-content .page-subtitle {
+  font-size: 15px;
+  line-height: 20px;
+  color: var(--color-text-secondary);
+  margin: 0 0 16px;
+}
+
+.native-content .actions {
+  flex-direction: column-reverse;
+  gap: 8px;
+  padding-top: 16px;
+  margin-top: 16px;
+  border-top: none;
+}
+
+.native-content .actions .btn {
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  min-width: 0;
+}

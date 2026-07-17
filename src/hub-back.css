@@ -1,0 +1,51 @@
+/* Floating back-to-hub pill — intentionally distinct from CGDS chrome
+   (neutral dark, not TurboTax blue) so teammates don't mistake it for product UI. */
+
+.hub-back {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 14px;
+  border-radius: 9999px;
+
+  background: rgba(33, 38, 42, 0.92); /* dark charcoal, slightly translucent */
+  color: #ffffff;
+
+  font-family: var(--font-family-brand);
+  font-size: 13px;
+  font-weight: var(--weight-demi);
+  text-decoration: none;
+  line-height: 1;
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  transition: background 120ms ease, transform 120ms ease;
+}
+
+.hub-back:hover {
+  background: rgba(33, 38, 42, 1);
+  transform: translateY(-1px);
+}
+
+.hub-back:active {
+  transform: translateY(0);
+}
+
+.hub-back__kbd {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+  font-weight: var(--weight-demi);
+  padding: 2px 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  letter-spacing: 0.03em;
+}

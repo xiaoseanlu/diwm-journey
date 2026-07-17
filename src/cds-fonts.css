@@ -1,0 +1,64 @@
+/* Vite equivalent of next/font/local for cds-react-components Tally fonts */
+
+@font-face {
+  font-family: Tally;
+  src: url("../node_modules/cds-react-components/src/fonts/Tally-Regular.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Tally;
+  src: url("../node_modules/cds-react-components/src/fonts/Tally-Medium.ttf")
+    format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Tally;
+  src: url("../node_modules/cds-react-components/src/fonts/Tally-Bold.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Tally Display";
+  src: url("../node_modules/cds-react-components/src/fonts/TallyDisplay-Light.ttf")
+    format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Tally Display";
+  src: url("../node_modules/cds-react-components/src/fonts/TallyDisplay-Regular.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Tally Display";
+  src: url("../node_modules/cds-react-components/src/fonts/TallyDisplay-Medium.ttf")
+    format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Tally Display";
+  src: url("../node_modules/cds-react-components/src/fonts/TallyDisplay-Bold.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

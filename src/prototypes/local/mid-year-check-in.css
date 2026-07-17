@@ -1,0 +1,487 @@
+/* Mid-year check-in scheduled — Figma 1646:29454 */
+
+.mid-year {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 0 20px 40px;
+  box-sizing: border-box;
+}
+
+.mid-year__expert {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mid-year__hero-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.mid-year__hero {
+  display: block;
+  width: 100%;
+  height: 197px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.mid-year__avatar {
+  position: absolute;
+  left: 10px;
+  bottom: -17px;
+  width: 83px;
+  height: 83px;
+}
+
+.mid-year__avatar-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.mid-year__avatar-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 999px;
+}
+
+.mid-year__expert-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 17px;
+}
+
+.mid-year__expert-name-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.mid-year__expert-name {
+  margin: 0;
+  font-family: "Tally", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  color: var(--color-text-primary, #21262a);
+}
+
+.mid-year__dot {
+  display: inline-block;
+  width: 2px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--color-text-secondary, #5d686f);
+  flex-shrink: 0;
+}
+
+.mid-year__dot--inline {
+  margin: 0 4px;
+}
+
+.mid-year__rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: "Tally", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28px;
+  color: var(--color-text-primary, #21262a);
+}
+
+.mid-year__star {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.mid-year__rating-count {
+  color: #5d686f;
+}
+
+.mid-year__expert-detail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  font-family: "Tally", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--color-text-primary, #21262a);
+}
+
+.mid-year__section-heading {
+  margin: 0 0 16px;
+  font-family: "Tally", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--color-text-primary, #000000);
+}
+
+.mid-year__section-heading--next {
+  margin: 0;
+  padding: 10px 0 0;
+}
+
+.mid-year__appointment-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  border: 1px solid #d5dee3;
+  border-radius: 16px;
+  background: var(--color-surface-primary, #ffffff);
+  box-sizing: border-box;
+}
+
+.mid-year__appointment-lead {
+  margin: 0;
+  font-family: "Tally", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--color-text-primary, #21262a);
+}
+
+.mid-year__location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mid-year__map-pin {
+  display: block;
+  width: 20px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.mid-year__location-name {
+  font-family: "Tally", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #205ea3;
+}
+
+.mid-year__appointment-time {
+  margin: 0;
+  font-family: "Tally", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--color-text-primary, #21262a);
+}
+
+.mid-year__manage-btn {
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px 16px;
+  border: 1px solid var(--color-text-primary, #1c1d24);
+  border-radius: 46px;
+  background: transparent;
+  font-family: "Tally", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--color-text-primary, #000000);
+  cursor: pointer;
+}
+
+.mid-year__action-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #1c0265;
+}
+
+.mid-year__action-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  background: #eef5fc;
+  border-radius: 20px 20px 0 0;
+  box-sizing: border-box;
+}
+
+.mid-year__action-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.mid-year__auto-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  width: fit-content;
+  font-family: "Tally Display", "Tally", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #1c1d24;
+}
+
+.mid-year__auto-sparkle {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.mid-year__action-title {
+  margin: 0;
+  font-family: "Tally Display", "Tally", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 28px;
+  color: #1c1d24;
+}
+
+.mid-year__checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.mid-year__checklist-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.mid-year__check-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+.mid-year__check-slot {
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.mid-year__checklist-text {
+  flex: 1;
+  min-width: 0;
+  font-family: "Tally", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #21262a;
+}
+
+.mid-year__check--done {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: #1c0265;
+  overflow: hidden;
+}
+
+.mid-year__check-icon {
+  display: block;
+  width: 12px;
+  height: 9px;
+  flex-shrink: 0;
+}
+
+.mid-year__check--empty {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.mid-year__summary-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 12px 12px 16px;
+  border: none;
+  background: #1c0265;
+  color: #ffffff;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.mid-year__summary-label {
+  flex: 1;
+  min-width: 0;
+  font-family: "Tally", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: left;
+}
+
+.mid-year__summary-chevron {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.mid-year__next-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.mid-year__next-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 72px;
+  padding: 24px 20px;
+  border-radius: 16px;
+  background: #eff4f9;
+  box-sizing: border-box;
+  width: 100%;
+  border: none;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+}
+
+.mid-year__next-row--clickable {
+  cursor: pointer;
+}
+
+.mid-year__next-row--referral {
+  background: #c9ff98;
+}
+
+.mid-year__next-row--team {
+  padding-left: 9px;
+}
+
+.mid-year__next-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.mid-year__next-icon img {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.mid-year__ck-logo {
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 999px;
+}
+
+.mid-year__next-label {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  font-family: "Tally", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--color-text-primary, #1c1d24);
+}
+
+.mid-year__team-avatars {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 46px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.mid-year__team-avatar {
+  position: relative;
+  display: block;
+  width: 18.667px;
+  height: 18.667px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 0.583px 1.167px rgba(0, 0, 0, 0.2);
+}
+
+.mid-year__team-avatar--ben {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.mid-year__team-avatar--franklin {
+  position: absolute;
+  left: 14px;
+  top: 9px;
+  z-index: 2;
+}
+
+.mid-year__team-avatar--daniela {
+  position: absolute;
+  left: 28px;
+  top: 9px;
+  z-index: 3;
+}
+
+.mid-year__team-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.mid-year__team-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 999px;
+}
+
+.mid-year__next-row--team .mid-year__next-icon {
+  width: 46px;
+  height: 28px;
+}
+
+.screen--mid-year-check-in .screen__scroll {
+  padding-top: 8px;
+}
