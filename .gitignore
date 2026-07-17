@@ -1,0 +1,56 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ---------------------------------------------------------------------------
+# Committed: platform shells, shared icons, hub back pill, example flows.
+#
+# The four shells (Web / mWeb / iOS / Android) took significant design-accuracy
+# work and match the CGDS Figma "CG TY25 Nav & Shell" frames.
+#
+# Example flows live in src/prototypes/examples/ (W-2 upload, Finish & File) so
+# new teammates have end-to-end references of "what good looks like." Everything
+# in that folder IS committed.
+#
+# Per-user flows: /prototype scaffolds into src/prototypes/local/ by default —
+# everything under local/ is gitignored, so your experiments stay on your
+# machine. If you want to share a flow with the team, move it from
+# local/ into examples/ and register it in src/prototypes/registry.tsx.
+# ---------------------------------------------------------------------------
+
+# Per-user prototype flows + registry additions — not committed by default.
+# OVERRIDE: this prototype (DIWM FY27) is being shared via GitHub Pages, so
+# the local files ARE committed for backup. If you fork this prototype and
+# want the original team behavior, uncomment the two lines below.
+# src/prototypes/local/
+# src/prototypes/registry.local.tsx
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Video frame extraction scratch (running-checks.mov analysis)
+public/running-checks.mov
+public/images/running-checks-*

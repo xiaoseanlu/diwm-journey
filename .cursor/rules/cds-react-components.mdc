@@ -1,0 +1,232 @@
+---
+name: cds-react-components
+description: Build UI prototypes using the CDS React component library. MUST use when building screens, pages, or UI with CDS/DIWM components. Enforces use of existing CDS components — never recreate what already exists.
+---
+
+# CDS React Components — Prototype Skill
+
+You are building UI using the **CDS React component library**. This skill is the source of truth for available components, icons, and design tokens.
+
+## CRITICAL RULES
+
+1. **NEVER recreate a component that exists in CDS.** If the UI you need matches any component below, you MUST import and use it. Do not write a custom version.
+2. **This skill is the complete API reference.** Everything you need to use the components is documented below — no need to read source files or clone a repo.
+3. **New components are allowed** only when no existing CDS component covers the need. New components must use CDS design tokens and follow CDS patterns (Tailwind classes, `className` prop, TypeScript interface export).
+4. **Use CDS design tokens** for all colors, radii, and typography. Never hardcode hex values that exist as tokens.
+5. **Use CDS icons** listed below. Never inline SVG paths for icons that already exist.
+6. **Always build inside a 393px-wide iOS frame.** All pages and screens must be rendered inside a fixed `w-[393px]` container centered on screen, simulating an iPhone 15 viewport. Use `min-h-screen` for the inner content. This ensures every prototype looks correct at mobile scale.
+
+Source repo: `github.intuit.com/ntummalapal/cds-react-components`
+
+---
+
+## Setup
+
+If `cds-react-components` is not in `package.json`, follow the setup instructions in the project's `CLAUDE.md` or the package README at `node_modules/cds-react-components/README.md`.
+
+> **Skip setup** if you are working inside the `cds-react-components` repo itself.
+
+---
+
+## Components Reference
+
+All imports from `cds-react-components/src/components`.
+
+### Button
+```tsx
+import { Button } from "cds-react-components/src/components";
+<Button variant="primary|secondary|outline" size="large|small|xsmall" inverse={false} label="Continue" icon={<Icon />} />
+```
+
+### Input
+```tsx
+<Input label="Email" helperText="We'll never share this" icon={<Icon />} placeholder="you@example.com" />
+```
+
+### Badge
+```tsx
+<Badge color="gray|green|blue|white|neutral" label="Active" statusDot={false} />
+```
+
+### Header
+```tsx
+<Header header="Title" description="Subtitle text" position="page|section|interstitial" />
+```
+
+### Tabs
+```tsx
+<Tabs tabs={[{ id: "t1", label: "Tab 1" }]} activeTab="t1" onTabChange={(id) => {}} />
+```
+
+### TabBar
+Bottom navigation bar with built-in icon set.
+```tsx
+import { TabBar, CK_TABS, TT_TABS } from "cds-react-components/src/components";
+<TabBar variant="tt|ck" tabs={TT_TABS} activeTab="home" onTabChange={(id) => {}} showLabels={false} showAiButton={true} />
+```
+Pre-configured presets: `CK_TABS`, `CK_TABS_MARKETPLACE`, `TT_TABS`.
+
+### Toolbar
+Top app bar with status bar, AI search, navigation.
+```tsx
+<Toolbar type="ck-l0|tt-l0|ck-l1|tt-l1|tt-assisted|tt-assisted-l1|tt-vignettes|l2|l2-dark" progress={true} progressValue={50} showStatusBar={true} />
+```
+The `tt-assisted` variant shows an expert avatar + Intuit AI logo combo in the search pill with a green status dot. Pass `expertImageSrc` to provide the expert photo.
+```tsx
+<Toolbar type="tt-assisted" expertImageSrc="/expert.jpg" />
+```
+TT vignettes (CCP glass toolbar — tax return pill + inline progress):
+```tsx
+<Toolbar type="tt-vignettes" progressValue={18} vignetteLabel="Chloe's 2026 taxes" onVignetteClick={() => {}} />
+```
+
+### MetricTile
+```tsx
+<MetricTile variant="blue|tan" type="money|credit" label="Checking" value="$6,356" changeText="5% this month" />
+```
+
+### Row
+```tsx
+<Row size="large|small" icon={<Icon />} label="Deductions" description="Optional" badgeLabel="Not started" badgeColor="gray" />
+```
+
+### Tile / TileGroup
+```tsx
+<TileGroup>
+  <Tile label="Option A" description="Description" selected="unselected|selected-green|selected-magenta|selected-blue" icon={<Icon />} />
+</TileGroup>
+```
+
+### ChoiceTile
+```tsx
+<ChoiceTile label="Option" description="Description" selected={false} pressed={false} icon={<Icon />} image={<img />} />
+```
+
+### SummaryTable
+```tsx
+<SummaryTable header="Summary" items={[{ key: "Filing status", valueText: "Single", valueNumber: "" }]} tappable={true} />
+```
+
+### BenefitsList
+```tsx
+<BenefitsList items={[{ label: "Feature", description: "Details", icon: <Icon /> }]} />
+```
+
+### Stepper
+```tsx
+<Stepper value={2} min={0} max={10} onChange={(v) => {}} />
+```
+
+### Checkbox
+```tsx
+<Checkbox label="I agree" checked={false} onChange={(checked) => {}} />
+```
+
+### Link
+```tsx
+<Link label="Edit" size="medium|small|xsmall" href="/path" />
+```
+
+### ProgressIndicator
+```tsx
+<ProgressIndicator progress={75} inverse={false} />
+```
+
+### StickyActionFooter
+```tsx
+<StickyActionFooter primaryLabel="Continue" onPrimaryClick={() => {}} secondaryLabel="Skip" showFab={true} fabImage="/expert.jpg" />
+```
+
+### AiPon
+Intuit AI logo + label.
+```tsx
+<AiPon label="Intuit Assist" variant="default|on-dark" />
+```
+
+### DeviceStatusBar
+iOS-style status bar.
+```tsx
+<DeviceStatusBar time="9:41" dark={false} dynamicIsland={false} />
+```
+
+---
+
+## Icons Reference
+
+All imports from `cds-react-components/src/icons`. Every icon accepts `{ className?: string }` and uses `currentColor`.
+
+| Category | Icons |
+|----------|-------|
+| Navigation | `HomeIcon`, `ChevronLeftIcon`, `MenuIcon`, `MoreIcon` |
+| Commerce | `CartIcon`, `CardIcon`, `CashIcon`, `MoneyBagIcon`, `MarketplaceIcon` |
+| Content | `FolderIcon`, `LightbulbIcon`, `ShieldCheckIcon` |
+| Alerts | `NotificationIcon`, `CheckmarkIcon` |
+| iOS Status | `CellularIcon`, `WifiIcon`, `BatteryIcon` |
+| Misc | `BenefitCircleIcon` |
+
+```tsx
+import { HomeIcon, CartIcon } from "cds-react-components/src/icons";
+<HomeIcon className="size-6 text-blue-6" />
+```
+
+---
+
+## Design Tokens
+
+Import `cds-react-components/src/styles/tokens.css` in your app's global CSS.
+
+### Colors (Tailwind classes)
+
+| Token | Class | Hex |
+|-------|-------|-----|
+| Foreground | `text-foreground-base` | #1d1d1d |
+| Foreground muted | `text-foreground-muted` | #4d4d4d |
+| Surface primary | `bg-surface-primary` | #ffffff |
+| Surface muted | `bg-surface-muted` | #f5f5f2 |
+| Primary surface | `bg-primary-surface` | #1d1d1d |
+| Primary on surface | `text-primary-on-surface` | #ffffff |
+| Border base | `border-border-base` | #dcdcda |
+| Border focus | `border-border-focus` | #236cff |
+| Blue 1 | `bg-blue-1` | #eef5fc |
+| Blue 2 | `bg-blue-2` | #d6e8f8 |
+| Blue 6 | `text-blue-6` | #236cff |
+| Blue 10 | `text-blue-10` | #1c0265 |
+| Blue 11 | `text-blue-11` | #14014b |
+| Green 2 | `bg-green-2` | #e0ffc2 |
+| Green 6 | `bg-green-6` | #3bd85e |
+| Green 9 | `text-green-9` | #287f39 |
+| Green 11 | `text-green-11` | #1b4420 |
+| Green 12 | `text-green-12` | #142613 |
+| Plum 1 | `bg-plum-1` | #ffdbfe |
+| Plum 9 | `text-plum-9` | #a31879 |
+| Plum 11 | `text-plum-11` | #650c25 |
+| Accent red | `bg-[#800b0b]` | #800b0b |
+
+### Border Radii
+
+| Token | Tailwind | Value |
+|-------|----------|-------|
+| Round (pills) | `rounded-round` | 9999px |
+| Cards | `rounded-cards` | 20px |
+| 2XL | `rounded-2xl` | 16px |
+| Small things | `rounded-sm` | 12px |
+| Big things | `rounded-big` | 20px |
+
+### Typography
+
+| Font | Tailwind | Usage |
+|------|----------|-------|
+| Tally | `font-sans` / `font-body` | Body text, labels |
+| Tally Display | `font-display` | Headings, large numbers |
+
+---
+
+## When building new components
+
+If the UI you need does not exist above, you may create a new component. It MUST:
+
+1. Use TypeScript with an exported `Props` interface
+2. Use Tailwind classes with CDS design tokens (no raw hex for colors that have tokens)
+3. Accept a `className?: string` prop
+4. Follow the same file pattern as existing CDS components
+5. Be a candidate for future inclusion in the CDS library
