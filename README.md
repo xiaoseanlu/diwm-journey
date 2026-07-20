@@ -1,36 +1,35 @@
-# fy27-assisted-vignettes-diwm
+# FY27 DIWM Prototype
 
-FY27 Vignettes, anchor flow that shows a DIWM customer journey
+FY27 Assisted Vignettes — anchor flow showing a DIWM (Do It With Me) customer journey.
 
 **Theme:** turbotax · **Brand:** turbotax · **Created:** 2026-05-18
 
-## Open it
+## Try it live
 
-The dashboard server serves all prototypes at **http://localhost:8080/workspace/prototypes/**. 
+- **Main DIWM journey:** https://xiaoseanlu.github.io/diwm-journey/#/diwm-journey/mweb
+- **All flows (hub):** https://xiaoseanlu.github.io/diwm-journey/
 
-Direct URL:
-```
-http://localhost:8080/workspace/prototypes/fy27-assisted-vignettes-diwm/dist/
-```
+On the first screen, choose **"Do it myself" → Get started** to continue through the built flow. (The "Hand off to a local expert" tile links out to an internal Figma prototype.)
 
-For live HMR:
-```bash
-nvm use && npm run dev
-```
-
-## CDS component library
-
-`cds-react-components` is installed for this Figma-linked prototype. See [CDS-SETUP.md](./CDS-SETUP.md).
-
-- Hub flow: **CDS component demo** (mWeb)
-- Cursor rule: `.cursor/rules/cds-react-components.mdc`
+## Demo video
 
 ## What's inside
 
-- 7-screen DIWM customer journey flow
-- SKU Choice → Welcome → AI Chat → Expert Match → Review Hub → Plan Ahead → End
-- mWeb (393px) format with MWebShell
-- React + TypeScript with CGDS tokens
+- 7-screen DIWM customer journey: SKU Choice → Welcome → AI Chat → Expert Match → Review Hub → Plan Ahead → End
+- ~19 supporting flows on the hub (post-call outcomes, expert review, mid-year check-in, and more)
+- mWeb (393px) format with MWebShell · React + TypeScript with CGDS tokens
+
+## Run locally
+
+```bash
+nvm use                    # Node 20
+npm install --include=dev
+npm run dev                # opens http://localhost:5174/#/diwm-journey/mweb
+```
+
+Deploy to GitHub Pages with `npm run deploy:pages`.
+
+> Note: `cds-react-components` installs via SSH from github.intuit.com, so install/build requires Intuit GHE access.
 
 ## Source
 
